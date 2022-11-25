@@ -1,8 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/page/home.dart';
+import 'package:my_app/page/test1.dart';
+import 'package:my_app/providers/product_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(create: (context) => ProductProvider()),
+    ],
+    child: MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,9 +22,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
+        fontFamily: 'Anupark',
         primarySwatch: Colors.blue,
       ),
-      home: Home(),
+      // home: Home(),
+      initialRoute: '/home',
+      routes: {
+        '/home': (_) => Home(),
+        '/test1': (_) => Test1(),
+      },
     );
   }
 }

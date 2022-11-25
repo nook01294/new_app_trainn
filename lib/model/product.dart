@@ -1,8 +1,8 @@
 class Product {
   String? status;
   String? message;
-  List<Data>? data;
 
+  List<Data>? data;
   Product({this.status, this.message, this.data});
 
   Product.fromJson(Map<String, dynamic> json) {
